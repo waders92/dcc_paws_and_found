@@ -1,0 +1,106 @@
+﻿@model PetFinder.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AnimalType.Species)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnimalType.Species)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color.Hue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color.Hue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location.ZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isReunited)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isReunited)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isPetUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isPetUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isPetFinder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isPetFinder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
