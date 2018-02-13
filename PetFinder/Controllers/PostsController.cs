@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PetFinder.Models;
+using Microsoft.AspNet.Identity;
 
 namespace PetFinder.Controllers
 {
@@ -58,6 +59,7 @@ namespace PetFinder.Controllers
         {
             if (ModelState.IsValid)
             {
+                post.UserID = User.Identity.GetUserId();
                 db.Post.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");

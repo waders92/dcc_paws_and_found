@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201802132037312_roles.Designer.cs">
       <DependentUpon>201802132037312_roles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802132152440_seeding.cs" />
+    <Compile Include="Migrations\201802132152440_seeding.Designer.cs">
+      <DependentUpon>201802132152440_seeding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnimalType.cs" />
@@ -344,6 +348,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802132037312_roles.resx">
       <DependentUpon>201802132037312_roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802132152440_seeding.resx">
+      <DependentUpon>201802132152440_seeding.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
