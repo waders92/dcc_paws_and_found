@@ -29,5 +29,13 @@ namespace PetFinder.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Visitor> Visitor { get; set; }
+        public DbSet<AnimalType> AnimalType { get; set; }
+        public DbSet<Color> Color { get; set; }
+        public DbSet<Location> Location { get; set; }
+        public DbSet<ZipCode> ZipCode { get; set; }
+        public DbSet<Post> Post { get; set; }
+        public DbSet<Comment> Comment { get; set; }
     }
 }
