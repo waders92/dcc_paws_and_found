@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PetFinder.Models;
 using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace PetFinder.Controllers
 {
@@ -61,17 +62,36 @@ namespace PetFinder.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostID,PostDate,Title,Message,isReunited,isPetUser,isPetFinder,UserID,LocationID,AnimalTypeID,ColorID")] Post post)
+        public ActionResult Create([Bind(Include = "PostID,PostDate,Title,Message,Image,isReunited,isPetUser,isPetFinder,UserID,LocationID,AnimalTypeID,ColorID")] Post post, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
-                post.PostDate = DateTime.Today;
+                //Upload Image
+                string imageUrl = "";
+                if (image != null && image.ContentLength > 0)
+                    try
+                    {
+                        string path = Path.Combine(Server.MapPath("~/Images"),
+                                                   Path.GetFileName(image.FileName));
+                        imageUrl = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
+                        imageUrl += "Images/" + image.FileName;
+                        image.SaveAs(path);
+                        ViewBag.Message = "File uploaded successfully";
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.Message = "ERROR:" + ex.Message.ToString();
+                    }
+                else
+                {
+                    ViewBag.Message = "You have not specified a file.";
+                }
+                post.Image = imageUrl;
                 post.UserID = User.Identity.GetUserId();
                 db.Post.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.AnimalTypeID = new SelectList(db.AnimalType, "AnimalTypeID", "Species", post.AnimalTypeID);
             ViewBag.ColorID = new SelectList(db.Color, "ColorID", "Hue", post.ColorID);
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "ZipCode", post.LocationID);

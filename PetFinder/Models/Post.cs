@@ -21,7 +21,7 @@ namespace PetFinder.Models
         [MaxLength(509)]
         public string Message { get; set; }
 
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
         public bool isReunited { get; set; }
         public bool isPetUser { get; set; }
