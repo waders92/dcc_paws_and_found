@@ -5,6 +5,32 @@
 }
 
 <h2>Posts</h2>
+<div class="top-buffer bottom-buffer col-xs-6">
+    @using (Html.BeginForm())
+    {
+        <b class="search-box">Search by Color &nbsp;</b><br />
+            @Html.RadioButton("option", "Black")<text> Black</text><br />
+            @Html.RadioButton("option", "Brown")<text> Brown</text><br />
+            @Html.RadioButton("option", "Yellow")<text> Yellow</text><br />
+            @Html.RadioButton("option", "White")<text> White</text><br />
+            @Html.RadioButton("option", "Red")<text> Red</text><br />
+            @Html.RadioButton("option", "Calico")<text> Calico</text><br />
+            @Html.RadioButton("option", "Tabby")<text> Tabby</text><br />
+
+            <b class="search-box">Animal Type: &nbsp;</b>
+            @Html.TextBox("animalType")<input type="submit" value="Search" />
+    }
+
+    @if (User.IsInRole("Admin"))
+    {
+        <p class="top-buffer">
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    }
+
+</div>
+
+
 
 <p>
     @Html.ActionLink("Create New", "Create")

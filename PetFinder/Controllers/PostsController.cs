@@ -16,8 +16,14 @@ namespace PetFinder.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
-        public ActionResult Index()
+        public ActionResult Index(string option, string animalType)
         {
+            if (!String.IsNullOrEmpty(animalType))
+            {
+                return View(db.Post.Include(c => c.AnimalType).Include(c => c.Color).Where(x => x.AnimalType.Species.Equals(animalType) && x.Color.Hue == option).ToList());
+                //return View(db.Customers.Include(c => c.Address).Include(c => c.Schedule).Where(x => x.Address.ZipCode.Equals(zipCode) && x.PickUpDate == option).ToList());
+            }
+
             var post = db.Post.Include(p => p.AnimalType).Include(p => p.Color).Include(p => p.Location);
             return View(post.ToList());
         }
