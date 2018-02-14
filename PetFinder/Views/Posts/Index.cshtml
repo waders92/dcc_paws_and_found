@@ -48,7 +48,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Image)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.isReunited)
         </th>
         <th>
@@ -59,7 +59,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserID)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -86,7 +86,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Image)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.isReunited)
         </td>
         <td>
@@ -97,7 +97,7 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserID)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PostID }) |
             @Html.ActionLink("Details", "Details", new { id=item.PostID }) |
