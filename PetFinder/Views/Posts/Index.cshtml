@@ -13,7 +13,7 @@
             @Html.RadioButton("option", "Red")<text> Red</text><br />
             @Html.RadioButton("option", "Calico")<text> Calico</text><br />
             @Html.RadioButton("option", "Tabby")<text> Tabby</text><br />
-
+            <br />
             <b class="search-box">Search By Animal: &nbsp;</b>
             @Html.TextBox("animalType")<input type="submit" value="Search" />
     }
@@ -31,6 +31,9 @@
             @Html.DisplayNameFor(model => model.AnimalType.Species)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Color.Hue)
         </th>
         <th>
@@ -45,9 +48,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Message)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
+      
         @*<th>
             @Html.DisplayNameFor(model => model.isReunited)
         </th>
@@ -69,6 +70,9 @@
             @Html.DisplayFor(modelItem => item.AnimalType.Species)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Color.Hue)
         </td>
         <td>
@@ -83,9 +87,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Message)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
+     
         @*<td>
             @Html.DisplayFor(modelItem => item.isReunited)
         </td>
@@ -99,9 +101,9 @@
             @Html.DisplayFor(modelItem => item.UserID)
         </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PostID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PostID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PostID })
+           
+            @Html.ActionLink("Details", "Details", new { id=item.PostID })
+          
         </td>
     </tr>
 }

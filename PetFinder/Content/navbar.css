@@ -1,0 +1,43 @@
+﻿a {
+    color: black;
+    font-weight: 100;
+    font-size: 18px;
+    background-color: transparent;
+}
+
+a:hover {
+    color: black;
+    background-color: transparent;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+}
+
+a.navbar-brand:hover {
+    color: #174dcc; 
+}
+
+.navbar-default .navbar-brand:hover {
+    color: black;
+}
+
+.nav > li > a:hover {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border: none;
+}
+
+.navbar-default a:hover{
+    color: black;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+    font-weight: bold;
+    color: black;
+}

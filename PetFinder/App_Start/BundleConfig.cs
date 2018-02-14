@@ -25,6 +25,7 @@ namespace PetFinder
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/navbar.css",
                       "~/Content/Site.css"));
         }
     }
