@@ -70,7 +70,8 @@
             @Html.DisplayFor(modelItem => item.AnimalType.Species)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image)
+            <img src="@Url.Content(item.Image)" style="height: 50px; width: 50px;"/>
+            @*@Html.DisplayFor(modelItem => item.Image)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Color.Hue)

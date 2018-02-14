@@ -37,7 +37,7 @@ namespace PetFinder.Controllers
         }
 
         // GET: Comments/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             ViewBag.PostID = new SelectList(db.Post, "PostID", "Title");
             return View();
@@ -48,7 +48,7 @@ namespace PetFinder.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentID,Message,CommentDate,UserID,PostID")] Comment comment)
+        public ActionResult Create([Bind(Include = "CommentID,Message,CommentDate,UserID,PostID")] Comment comment, int? id)
         {
             if (ModelState.IsValid)
             {

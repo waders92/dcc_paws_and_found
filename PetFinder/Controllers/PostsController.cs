@@ -87,6 +87,7 @@ namespace PetFinder.Controllers
                     ViewBag.Message = "You have not specified a file.";
                 }
                 post.Image = imageUrl;
+                post.PostDate = DateTime.Today;
                 post.UserID = User.Identity.GetUserId();
                 db.Post.Add(post);
                 db.SaveChanges();
