@@ -65,6 +65,7 @@ namespace PetFinder.Controllers
         {
             if (ModelState.IsValid)
             {
+                post.PostDate = DateTime.Today;
                 post.UserID = User.Identity.GetUserId();
                 db.Post.Add(post);
                 db.SaveChanges();
