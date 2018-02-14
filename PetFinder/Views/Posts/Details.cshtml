@@ -99,6 +99,12 @@
 
     </dl>
 </div>
+<!--This div should show the comments tt belong to this post ID-->
+<div>
+    @*@Html.Partial("_Details_Partial", new PetFinder.Models.Comment())*@
+    @*@Html.ActionLink("View Comments", "Index", "Comments")*@ 
+    <a href="@Url.Action("Index", "Comments", new { id = Model.PostID })" class="btn btn-primary">Get Comments</a>
+</div>
 <p>
     @Html.ActionLink("Add Comment", "Create", "Comments") |
     @*@Html.ActionLink("Add Comment", "Create", "Comments", new { id = Model.PostID }) |*@

@@ -15,10 +15,14 @@ namespace PetFinder.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Comments
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var comment = db.Comment.Include(c => c.Post);
-            return View(comment.ToList());
+            if (id != null)
+            {
+                return View(db.Comment.Include(c => c.Post).Where(x=> x.PostID == id).ToList());
+            }
+            var comments = db.Comment.Include(c => c.Post);
+            return View(comments.ToList());
         }
 
         // GET: Comments/Details/5
