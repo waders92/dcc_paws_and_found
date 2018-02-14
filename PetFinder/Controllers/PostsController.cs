@@ -61,7 +61,7 @@ namespace PetFinder.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostID,PostDate,Title,Message,Image,isReunited,isPetUser,isPetFinder,UserID,LocationID,AnimalTypeID,ColorID")] Post post)
+        public ActionResult Create([Bind(Include = "PostID,PostDate,Title,Message,isReunited,isPetUser,isPetFinder,UserID,LocationID,AnimalTypeID,ColorID")] Post post)
         {
             if (ModelState.IsValid)
             {

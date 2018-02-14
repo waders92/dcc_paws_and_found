@@ -22,3 +22,15 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.clr {
+    clear: both;
+}
+
+.bottom-buffer {
+    margin-bottom: 25px;
+}
+
+.top-buffer {
+    margin-top: 50px;
+}
