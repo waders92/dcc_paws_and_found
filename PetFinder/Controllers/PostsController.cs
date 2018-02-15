@@ -12,17 +12,21 @@ using System.IO;
 
 namespace PetFinder.Controllers
 {
+    [Authorize]
     public class PostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
-        public ActionResult Index(string option, string animalType)
+        public ActionResult Index(string option, string animalType, string status)
         {
             if (!String.IsNullOrEmpty(animalType))
             {
-                return View(db.Post.Include(c => c.AnimalType).Include(c => c.Color).Where(x => x.AnimalType.Species.Equals(animalType) && x.Color.Hue == option).ToList());
-                //return View(db.Customers.Include(c => c.Address).Include(c => c.Schedule).Where(x => x.Address.ZipCode.Equals(zipCode) && x.PickUpDate == option).ToList());
+                if (status == "1")
+                {
+                    return View(db.Post.Include(c => c.AnimalType).Include(c => c.Color).Where(x => x.AnimalType.Species.Equals(animalType) && x.Color.Hue == option && x.isPetUser).ToList());
+                }
+                return View(db.Post.Include(c => c.AnimalType).Include(c => c.Color).Where(x => x.AnimalType.Species.Equals(animalType) && x.Color.Hue == option && x.isPetFinder).ToList());
             }
 
             var post = db.Post.Include(p => p.AnimalType).Include(p => p.Color).Include(p => p.Location);
@@ -150,7 +154,7 @@ namespace PetFinder.Controllers
             }
             return View(post);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -158,6 +158,7 @@ namespace PetFinder.Controllers
             foreach (var role in RoleManager.Roles)
                 list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
             ViewBag.Roles = list;
+            list.RemoveAt(0);
             return View();
         }
 
