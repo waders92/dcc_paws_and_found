@@ -1,21 +1,27 @@
 ﻿@model PetFinder.Models.Post
 
 
-<h2>Details</h2>
-
 <div>
-    <h4>Post</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+
+        <dt style="display: none;">
+          @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd class="big-text">
+            "@Html.DisplayFor(model => model.Title)"
+        </dd>
+        <br />
+        <dt style="display: none;">
             @Html.DisplayNameFor(model => model.AnimalType.Species)
         </dt>
 
-        <dd>
+        <dd style="display: none;">
             @Html.DisplayFor(model => model.AnimalType.Species)
         </dd>
-        <br />
-        <dt>
+
+        <dt style="display: none;">
             @Html.DisplayNameFor(model => model.Image)
         </dt>
 
@@ -45,15 +51,6 @@
         <dd>
             @Model.PostDate.Value.ToShortDateString()
         </dd>
-  
-        <dt class="top-buffer">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd class="top-buffer">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Message)
         </dt>
@@ -63,6 +60,16 @@
         </dd>
     </dl>
 </div>
+
+<!--This div should show the comments that belong to this post ID-->
+<div class="top-buffer">
+    @*@Html.Partial("_Details_Partial", new { id = Model.PostID }))*@
+    @*@Html.ActionLink("View Comments", "Index", "Comments")*@
+    <a href="@Url.Action("Index", "Comments", new { id = Model.PostID })" class="btn btn-primary">Get Comments</a>
+    <a href="@Url.Action("Create", "Comments", new { id = Model.PostID })" class="btn btn-primary">Add Comment</a>
+    <a href="@Url.Action("Index", "Posts")" class="btn btn-primary">Back to List</a>
+</div>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUBB9Y1Zp2XUbMxdoBx59gnumFO9bJfiM"></script>
@@ -84,13 +91,5 @@
 {
     <div id="map" class="top-buffer bottom-buffer col-xs-10 col-xs-offset-1"></div>
 }
-<!--This div should show the comments that belong to this post ID-->
-<div class="top-buffer bottom-buffer">
-    @*@Html.Partial("_Details_Partial", new PetFinder.Models.Comment())*@
-    @*@Html.ActionLink("View Comments", "Index", "Comments")*@ 
-    <a href="@Url.Action("Index", "Comments", new { id = Model.PostID })" class="btn btn-primary">Get Comments</a>
-</div>
-<p>
-    @Html.ActionLink("Add Comment", "Create", "Comments") |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+

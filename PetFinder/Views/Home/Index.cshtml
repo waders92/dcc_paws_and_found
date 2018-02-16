@@ -1,20 +1,42 @@
-﻿@*<div class="top-buffer">
-    <div class="intro-text bottom-buffer text-center">
-        <h1>Helping lost pets find their way home!</h1>
+﻿<div class="icons top-buffer">
+    <div class="col-xs-3 text-center bottom-buffer">
+        <a href="@Url.Action("Index","Posts")"><img src="~/Content/Images/icon1.png" style="height: 100px;" /></a>
+        @*<img src="~/Content/Images/icon1.png" style="height: 100px;"/>*@
     </div>
-    <div class="main-image">
-        <img src="~/Content/Images/lost.jpg" />
+    <div class="col-xs-3 text-center bottom-buffer">
+        <a href="@Url.Action("Index","Posts")"><img src="~/Content/Images/icon2.png" style="height: 100px;" /></a>
+        @*<img src="~/Content/Images/icon2.png" style="height: 100px;" />*@
     </div>
-</div>
-<br class="clr" />*@
-
-<div class="top-buffer">
-    @*<div class="intro-text bottom-buffer text-center">
-        <h1>Helping lost pets find their way home!</h1>
-    </div>*@
-    <div class="main-image">
-        <img src="~/Content/Images/Paw.png" />
+    <div class="col-xs-3 text-center bottom-buffer">
+        <a href="@Url.Action("Index","Posts")"><img src="~/Content/Images/icon3.png" style="height: 100px;" /></a>
+        @*<img src="~/Content/Images/icon3.png" style="height: 100px;" />*@
+    </div>
+    <div class="col-xs-3 text-center bottom-buffer">
+        <a href="@Url.Action("Index","Posts")"><img src="~/Content/Images/icon4.png" style="height: 100px;" /></a>
+        @*<img src="~/Content/Images/icon4.png" style="height: 100px;" />*@
     </div>
 </div>
 <br class="clr" />
+<div class="top-buffer">
+    <h3>About Paws & Found</h3>
+    <p>
+        Paws and Found is a Free service that helps to REUNITE Lost and Found Pets with their families. Our website offers helpful tips on how to search for your missing loved one and also offers tips to prevent your pets from going missing in the future.
+        Paws and Found does carry expenses to keep our website and fan pages going. We appreciate you supporting our on-line donations to help pay for these costs.
+    </p>
+</div>
+<div class="top-buffer">
+    <h4>Make a donation today!</h4>
+    <form action="/Home/Charge" method="POST">
+        <script src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="Stripe_Test_Key"
+                data-locale="auto"
+                data-description="Paws & Found Donation"
+                data-amount="500">
+        </script>
+        <article>
+            <label>Amount: $5.00</label>
+        </article>
+    </form>
+</div>
 

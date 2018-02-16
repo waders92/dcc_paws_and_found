@@ -10,6 +10,7 @@ namespace PetFinder.Models
     {
         [Key]
         public int AnimalTypeID { get; set; }
+        [Display(Name = "Animal Type")]
         public string Species { get; set; }
     }
 }

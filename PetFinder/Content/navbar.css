@@ -1,25 +1,25 @@
-﻿a {
-    color: black;
-    font-weight: 100;
-    font-size: 15px;
-    background-color: transparent;
-}
-
+﻿
 a:hover {
     color: black;
     background-color: transparent;
 }
 
 .navbar-brand {
-  font-size: 2rem;
+  font-size: 5rem;
+  color: black;
+}
+
+.navbar-default .navbar-brand {
+    color: black;
+    font-weight: bolder;
 }
 
 a.navbar-brand:hover {
-    color: #174dcc; 
+    color: #dd083a; 
 }
 
 .navbar-default .navbar-brand:hover {
-    color: black;
+    color: #428bca;
 }
 
 .nav > li > a:hover {
@@ -33,11 +33,16 @@ a.navbar-brand:hover {
 }
 
 .navbar-default a:hover{
-    color: black;
+    color: #428bca;
     font-weight: bold;
 }
 
 .navbar-default .navbar-nav > li > a:hover{
     font-weight: bold;
+    color: #428bca;
+}
+
+.navbar-default .navbar-nav > li > a {
     color: black;
+    font-weight: bolder;
 }

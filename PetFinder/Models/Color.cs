@@ -11,6 +11,7 @@ namespace PetFinder.Models
         [Key]
         [Display(Name = "Color")]
         public int ColorID { get; set; }
+        [Display(Name = "Color")]
         public string Hue { get; set; }
     }
 }

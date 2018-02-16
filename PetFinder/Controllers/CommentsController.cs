@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PetFinder.Models;
+using System.Net.Mail;
 
 namespace PetFinder.Controllers
 {
@@ -23,6 +24,16 @@ namespace PetFinder.Controllers
             }
             var comments = db.Comment.Include(c => c.Post);
             return View(comments.ToList());
+        }
+
+        public PartialViewResult _Details_Partial(int? id)
+        {
+            if (id != null)
+            {
+                return PartialView(db.Comment.Include(c => c.Post).Where(x => x.PostID == id).ToList());
+            }
+            var comments = db.Comment.Include(c => c.Post);
+            return PartialView(comments.ToList());
         }
 
         // GET: Comments/Details/5
@@ -52,13 +63,51 @@ namespace PetFinder.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentID,Message,CommentDate,UserID,PostID")] Comment comment, int? id)
+        public async System.Threading.Tasks.Task<ActionResult> Create([Bind(Include = "CommentID,Message,CommentDate,UserID,PostID")] Comment comment, int? id)
         {
             if (ModelState.IsValid)
             {
+                comment.PostID = (int)id; 
                 db.Comment.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                var post = from x in db.Post
+                           where x.PostID == comment.PostID
+                           select x.UserID;
+
+                // we have the user ID 
+
+                // user id is the non queryable version of post because we used .first
+                var userID = post.FirstOrDefault();
+
+                // 
+                var email = (from x in db.Users
+                             where x.Id == userID
+                             select x).FirstOrDefault().Email;
+
+                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                var message = new MailMessage();
+                message.To.Add(new MailAddress(email));  // replace with valid value 
+                message.From = new MailAddress("pawsandfound1234@gmail.com");  // replace with valid value
+                message.Subject = "Comment from Paws and Found!";
+                message.Body = string.Format("You have a new comment about a post you have made at Paws and Found!");
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "pawsandfound1234@gmail.com",  // replace with valid value
+                        Password = "cjlw2468@"  // replace with valid value
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    await smtp.SendMailAsync(message);
+                }
+                TempData["Message"] = "Your comment has been saved and an email has been sent to the post creator.";
+                return RedirectToAction("Confirmation");
             }
 
             ViewBag.PostID = new SelectList(db.Post, "PostID", "Title", comment.PostID);
@@ -131,6 +180,12 @@ namespace PetFinder.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        public ActionResult Confirmation()
+        {
+            return View();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace PetFinder.Models
 
 
         [Column(TypeName = "datetime2")]
+        [Display(Name ="Date")]
         public DateTime? PostDate { get; set; }
 
         public string Title { get; set; }
