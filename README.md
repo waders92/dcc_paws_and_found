@@ -1,7 +1,10 @@
 # Pet Finder Application
-# Built with ASP.NET and MVC w/ Code First Migrations
-# Features include...
 
+**DevCodeCamp Project**
+
+Features include...
+
+- Built with ASP.NET and MVC w/ Code First Migrations**
 - Image Uploading
 - Google Maps API
 - Stripe API
